@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+
+	<link rel="stylesheet" href="jquery-mobile/jquery.mobile-1.4.2.min.css" />
+	<link rel="stylesheet" href="jquery-mobile/jquery.mobile.structure-1.4.2.min.css" />
+	<link rel="stylesheet" href="jquery-mobile/jquery.mobile.theme-1.4.2.min.css" />
+    
+    <script src="jquery-mobile/jquery-1.10.2.min.js"></script>
+	<script src="jquery-mobile/jquery.mobile-1.4.2.min.js"></script>
+	<script src="jquery-mobile/fastclick.js"></script>
+
+
+<script type="text/javascript">
+
+//메세지 전송 관련 글자 입력
+function input_smstext(str,tsu){
+	var ss = encodeURI(str);
+	var rst = encodeURI(ss);
+	return rst;
+}
+
+
+const SEVERURL = "https://sohoring.com:41020/sohoring/allphpfile/setLGsohoring.php";
+
+function areYouSohoring(){
+	var myTel = "01022338101"; //getMemberTel();   //고객의 전화번호를 가져온다.
+	
+	
+	
+
+	
+	//통화 연결음 가입여부를 확인한다.
+	var qr = SEVERURL;
+	var param = "mode=SohoRegStatus&TELECOM_CODE=LGU&SERVICE_CODE=SOHO001&CTN="+myTel;
+	alert(qr+"/"+param);
+	$.ajax({type:"POST", data:input_smstext(param, 0), url:qr, timeout:20000, dataType:"text", success:function(data){
+		
+		alert(data);
+	
+
+		
+	},error:function(xhr,status,error){
+		
+	
+	}
+	});
+
+}
+
+
+areYouSohoring();
+
+</script>
+
+
+</head>
+<body>
+test go
+
+
+
+</body>
+</html>
